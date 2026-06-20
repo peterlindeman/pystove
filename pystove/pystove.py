@@ -119,9 +119,9 @@ class Stove:
             data[c.DATA_PHASE] if data[c.DATA_PHASE] not in (2, 3) else 1
         )
         stove_datetime = datetime(
-            data[YEAR],
-            data[MONTH],
-            data[DAY],
+            max(1, data[YEAR]),
+            max(1, data[MONTH] + 1),  # Stove month output is 0 based.
+            max(1, data[DAY]),
             data[HOURS],
             data[MINUTES],
             data[SECONDS],
